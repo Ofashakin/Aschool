@@ -1,16 +1,27 @@
 
 class Paddle {
   float x;
-  float y;
+  float y = height / 2;;
   float w = 10;
-  float h = 50;
+  float h = 100;
   
-  Paddle(float x_) {
-    x = x_;
+  Paddle(boolean left) {
+    if (left) {
+      x = w;
+    } else {
+      x = width - w;
+    }
+  }
+  
+  void move(float steps) {
+    y += steps;
+    y = constrain(y,h/2,height-h/2);
+    
   }
   
  void show() {
    fill(255);
    rectMode(CENTER);
    rect(x,y,w,h);
+}
 }
