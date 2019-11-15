@@ -4,6 +4,7 @@ class Puck {
   float xspeed;
   float yspeed;
   float r = 12;
+  float speed = 5;
 
   Puck() {
     reset();
@@ -15,8 +16,9 @@ class Puck {
         float diff = y - (p.y - p.h/2);
         float rad = radians(45);
         float angle = map(diff, 0, p.h, -rad, rad);
-        xspeed = 5 * cos(angle);
-        yspeed = 5 * sin(angle);
+        speed *= 1.1;
+        xspeed = speed * cos(angle);
+        yspeed = speed * sin(angle);
         x = p.x + p.w/2 + r;
         //xspeed *= -1;
       }
@@ -28,8 +30,9 @@ class Puck {
         //xspeed *= -1;
         float diff = y - (p.y - p.h/2);
         float angle = map(diff, 0, p.h, radians(225), radians(135));
-        xspeed = 5 * cos(angle);
-        yspeed = 5 * sin(angle);
+        speed  *= 1.1;
+        xspeed = speed * cos(angle);
+        yspeed = speed * sin(angle);
         x = p.x - p.w/2 - r;
       }
     }
@@ -38,9 +41,11 @@ class Puck {
 
 
 
-  void update() {
+  void update(boolean visible) {
+    if(visible){
     x = x + xspeed;
     y = y + yspeed;
+    }
   }
 
   void reset() {
@@ -48,8 +53,9 @@ class Puck {
     y = height/2;
     float angle = random(-PI/4, PI/4);
     //angle = 0;
-    xspeed = 5 * cos(angle);
-    yspeed = 5 * sin(angle);
+    speed = 5;
+    xspeed = speed * cos(angle);
+    yspeed = speed * sin(angle);
 
     if (random(1) < 0.5) {
       xspeed *= -1;
@@ -73,8 +79,10 @@ class Puck {
   }
 
 
-  void show() {
+  void show(boolean visible) {
+    if(visible){
     fill(255);
     ellipse(x, y, r*2, r*2);
+    }
   }
 }
