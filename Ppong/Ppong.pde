@@ -25,7 +25,7 @@ void draw() {
     textSize(30);
     textAlign(LEFT);
     text(inst1, 10, height / 3);
-    text("Press SPACE to start",  2 * (width / 6),  400);
+    text("Press SPACE to start \nPress R to restart...Enjoy! ;)",  2 * (width / 6),  400);
 
     
     textAlign(RIGHT);
